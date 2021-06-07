@@ -1,0 +1,22 @@
+/* --------------------------------
+   Typography
+   -------------------------------- */
+
+/*
+ * Font size in rems
+ */
+@mixin rem($target, $context: 16) {
+	font-size: $target + px;
+	font-size: convert($target, $context, rem);
+}
+
+/*
+ * Letter Spacing
+ */
+@function tracking($target) {
+	@return ($target / 1000) * 1em;
+}
+
+@mixin letter-spacing($target) {
+	letter-spacing: tracking($target);
+}

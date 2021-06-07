@@ -1,0 +1,36 @@
+/* --------------------------------
+   Form Inputs
+   -------------------------------- */
+
+.form-input {
+	@include rem(12);
+
+	width: 100%;
+	height: var(--input-size, 50px);
+	padding: var(--input-padding, 6px 16px 5px 16px);
+	transition: border-color 0.2s ease-in-out;
+	color: var(--input-color, #000000);
+	border-style: solid;
+	border-color: var(--input-border-color, #909493);
+	border-bottom-width: var(--input-border-width, 1px);
+	outline: none;
+	background-color: var(--input-background, transparent);
+	appearance: none;
+
+	@include mq(md) {
+		@include rem(16);
+	}
+
+	&--border {
+		border-width: var(--input-border-width, 1px);
+	}
+
+	&--border-bottom {
+		border-width: 0 0 var(--input-border-width, 1px) 0;
+	}
+
+	&.is-active,
+	&:focus {
+		--input-border-color: var(--input-border-color-active, var(--input-border-color));
+	}
+}

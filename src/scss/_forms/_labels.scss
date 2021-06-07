@@ -1,0 +1,117 @@
+/* --------------------------------
+   Form Labels
+   -------------------------------- */
+
+.form-label {
+	@include rem(14);
+
+	position: relative;
+	z-index: 2;
+	transition: transform 0.2s ease-in-out, color 0.2s ease-in-out, background-color 0.2s ease-in-out,
+		font-size 0.2s ease-in-out;
+	color: var(--label-color);
+
+	@include mq(md) {
+		@include rem(16);
+	}
+
+	&:before {
+		width: 0;
+		transition: width 0.2s ease-in-out;
+	}
+
+	&--vertical {
+		position: absolute;
+		top: var(--label-vertical-top, 16px);
+		left: var(--label-vertical-left, 12px);
+		padding-right: 5px;
+		padding-left: 5px;
+		transform: translateY(0px) scale(1);
+		transform-origin: left;
+
+		&:after {
+			display: block;
+			position: absolute;
+			z-index: -1;
+			top: -1px;
+			right: 0;
+			bottom: -1px;
+			left: 0;
+			width: 0;
+			height: 5px;
+			margin: auto;
+			content: '';
+			transition: width 0.2s ease-in-out;
+			pointer-events: none;
+			background-color: var(--input-background, #ffffff);
+		}
+
+		.form-input.is-active + &,
+		.form-input:focus + &,
+		.form-textarea.is-active + &,
+		.form-textarea:focus + &,
+		.form-select + &,
+		.choices.choices--default + &,
+		&.is-active {
+			transform: var(--label-vertical-transform, translateY(-25px) scale(0.9));
+			color: var(--label-color-active, var(--lavel-color));
+
+			&:after {
+				width: 100%;
+			}
+		}
+	}
+
+	&--alt {
+		@include rem(11);
+		@include letter-spacing(85);
+
+		font-style: normal;
+		text-transform: uppercase;
+
+		@include mq(md) {
+			@include rem(11);
+		}
+
+		--label-vertical-transform: translateY(-20px) scale(0.9);
+	}
+
+	&--italic {
+		font-style: italic;
+		text-transform: lowercase;
+	}
+
+	&--transparent {
+		--input-background: transparent;
+	}
+
+	&--small {
+		--label-vertical-left: 12px;
+		--label-vertical-top: 15px;
+	}
+
+	&--message {
+		line-height: 1.2;
+		position: relative;
+		margin-left: 15px;
+	}
+
+	a {
+		font-size: inherit;
+		color: inherit;
+	}
+}
+
+[data-label],
+.label {
+	// Error Message
+	.error {
+		display: inline;
+		margin-left: 4px;
+		color: #e23636;
+	}
+
+	.warning {
+		display: inline;
+	}
+}

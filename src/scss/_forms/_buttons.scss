@@ -1,0 +1,40 @@
+/* --------------------------------
+   Form Buttons
+   -------------------------------- */
+
+.form-submit {
+	@include rem(11);
+	@include letter-spacing(85);
+
+	z-index: 2;
+	width: var(--button-width, 'auto');
+	height: var(--input-size, 50px);
+	padding-top: 2px;
+	padding-right: 30px;
+	padding-left: 30px;
+	cursor: pointer;
+	transition: z-index 0.2s step-start, opacity 0.2s ease-in-out, background-color 0.2s ease-in-out,
+		border 0.2s ease-in-out;
+	text-align: center;
+	text-transform: uppercase;
+	color: var(--button-color, #2f3435);
+	border: 1px solid var(--button-border, #909493);
+	background-color: var(--button-background, transparent);
+
+	@include mq(md) {
+		@include rem(11);
+	}
+
+	&:hover {
+		--button-background: var(--button-background-hover, #dfdfdf);
+	}
+
+	&[disabled],
+	&--disabled {
+		cursor: not-allowed;
+	}
+
+	.form__actions--inline & {
+		border-left-width: 0;
+	}
+}

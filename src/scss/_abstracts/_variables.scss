@@ -1,0 +1,70 @@
+/* --------------------------------
+   Variables
+   -------------------------------- */
+
+/* Default Text */
+$primary-text-color: #1c1c1c;
+
+// Loader
+$loader-color: #1c1c1c;
+
+/* Fonts */
+$font-primary: '', sans-serif;
+
+/* Font Weight */
+$weight-light: 300;
+$weight-regular: 400;
+$weight-bold: 800;
+
+/* Font Awesome */
+$fa-font-path: '../fonts/font-awesome';
+
+/* Animations */
+$custom-ease-in: cubic-bezier(0.82, 0, 0.79, 0);
+$custom-ease-out: cubic-bezier(0.18, 1, 0.21, 1);
+
+// Grid breakpoints
+//
+// Define the minimum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+
+$grid-breakpoints: (
+	xxs: 0,
+	xs: 576px,
+	sm: 768px,
+	md: 992px,
+	lg: 1200px,
+	xl: 1500px,
+);
+
+// Spacing
+//
+// Control the default styling of most Bootstrap elements by modifying these
+// variables. Mostly focused on spacing.
+// You can add more entries to the $spacers map, should you nesed more variation.
+
+// scss-docs-start spacer-variables-maps
+$spacer: 1rem;
+$spacers: (
+	0: 0,
+	1: $spacer / 4,
+	2: $spacer / 2,
+	3: $spacer,
+	4: $spacer * 1.5,
+	5: $spacer * 3,
+);
+
+// Grid columns
+//
+// Set the number of columns and specify the width of the gutters.
+
+$grid-columns: 12;
+$grid-gutter-width: 40px;
+$grid-row-columns: 6;
+$gutters: $spacers;
+
+// Container padding
+
+$container-padding-x: 50px;
+
+$container-max-width: 1670px;

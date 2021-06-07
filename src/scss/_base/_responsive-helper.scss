@@ -1,0 +1,32 @@
+body.dev {
+	&:after {
+		font-size: 12px;
+		position: fixed;
+		z-index: 100;
+		right: 0;
+		bottom: 0;
+		padding: 2px 4px;
+		content: 'xs';
+		color: white;
+		background: rgba(0, 0, 0, 0.4);
+
+		@include mq(sm) {
+			content: 'sm';
+		}
+		@include mq(md) {
+			content: 'md';
+		}
+		@include mq(md2) {
+			content: 'md2';
+		}
+		@include mq(lg) {
+			content: 'lg';
+		}
+		@include mq(lg2) {
+			content: 'lg2';
+		}
+		@include mq(xl) {
+			content: 'xl';
+		}
+	}
+}

@@ -1,0 +1,69 @@
+/* --------------------------------
+   Form Radio
+   -------------------------------- */
+
+.form-radio__group {
+	margin-bottom: 20px;
+}
+
+.form-radio {
+	$root: &;
+
+	display: flex;
+
+	& + & {
+		margin-top: 10px;
+	}
+
+	&__input {
+		display: none;
+		width: 50px;
+	}
+
+	&__icon {
+		display: flex;
+		display: block;
+		justify-content: center;
+		align-items: center;
+		width: 13px;
+		height: 13px;
+		margin-top: 2px;
+		margin-right: 10px;
+		cursor: pointer;
+		transition: background-color 0.2s ease-in-out;
+		border: 1px solid;
+		border-color: var(--radio-border, #{''});
+		border-radius: 100px;
+		//background-color: var(--radio-background, #{rgba('', 0)});
+
+		#{$root}__input:checked ~ & {
+			--radio-background: #{''};
+		}
+
+		#{$root}__input:disabled ~ & {
+			cursor: disabled;
+			pointer-events: none;
+		}
+	}
+
+	&__label {
+		@include rem(14);
+
+		max-width: calc(100% - 30px);
+		color: var(--radio-label);
+
+		@include mq(md) {
+			@include rem(16);
+		}
+
+		#{$root}__input:disabled ~ & {
+			cursor: disabled;
+			pointer-events: none;
+		}
+
+		a {
+			text-decoration: underline;
+			color: inherit;
+		}
+	}
+}

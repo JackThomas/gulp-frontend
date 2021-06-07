@@ -1,0 +1,18 @@
+/* -------------------------------
+   Base
+   ------------------------------- */
+
+html {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: $font-primary;
+	color: $primary-text-color;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}

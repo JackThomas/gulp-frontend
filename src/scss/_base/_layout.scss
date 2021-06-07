@@ -1,0 +1,51 @@
+/* --------------------------------
+   Layout
+   -------------------------------- */
+
+.page-layout {
+	display: flex;
+	// min-height: -webkit-fill-available;
+	flex-direction: column;
+	min-height: 100vh;
+
+	.layout {
+		display: flex;
+		flex-grow: 1;
+		flex-direction: column;
+
+		@include mq-down(md) {
+			overflow: hidden;
+		}
+	}
+
+	.header-container {
+		position: absolute;
+		z-index: 200;
+		left: 0;
+		width: 100%;
+		transition: z-index 0.5s 0.3s step-end;
+
+		@include mq(md) {
+			z-index: 200;
+		}
+
+		&.transition-true {
+			transition: transform 0.3s ease-in-out, z-index 0.5s 0.3s step-end;
+		}
+	}
+
+	.main-container {
+		display: flex;
+		flex-grow: 1;
+		flex-direction: column;
+		position: relative;
+
+		.main-content {
+			display: flex;
+			flex-grow: 1;
+			flex-direction: column;
+			position: relative;
+			z-index: 10;
+		}
+	}
+}

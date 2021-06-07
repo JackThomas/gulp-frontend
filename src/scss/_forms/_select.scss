@@ -1,0 +1,27 @@
+/* --------------------------------
+   Form Selectbox
+   -------------------------------- */
+
+.form-select {
+	@include rem(12);
+
+	font-weight: $weight-regular;
+	width: 100%;
+	height: 50px;
+	padding: 8px 5px 5px 16px;
+	transition: border-color 0.3s ease-in-out;
+	border-radius: 0;
+	outline: none;
+
+	background-repeat: no-repeat;
+	background-position: calc(100% - 1.7em) center;
+	background-size: 0.8em;
+	appearance: none;
+
+	@include mq(md) {
+		@include rem(12);
+
+		height: 50px;
+		padding: 8px 5px 5px 16px;
+	}
+}

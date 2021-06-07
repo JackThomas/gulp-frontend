@@ -1,0 +1,6 @@
+edge 16
+last 6 versions
+safari >= 5
+ios_saf >= 6
+ie >= 10
+android >= 4

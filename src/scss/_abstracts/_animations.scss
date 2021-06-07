@@ -1,0 +1,27 @@
+/* --------------------------------
+   Animations
+   -------------------------------- */
+
+@keyframes opacity-fadein {
+	from {
+		opacity: 0;
+		visibility: hidden;
+	}
+	to {
+		opacity: 1;
+		visibility: visible;
+	}
+}
+
+/**
+* Use fadeout with @include invisible
+* place invisible under opacity-fadeout
+**/
+@keyframes opacity-fadeout {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}

@@ -1,0 +1,110 @@
+/* --------------------------------
+   Grid Mixins
+   -------------------------------- */
+
+// Generate semantic grid columns with these mixins.
+
+@mixin make-row($gutter: $grid-gutter-width) {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: var(--row-justify-content, initial);
+	align-items: var(--row-align-items, initial);
+	margin-right: calc(var(--gutter-end) / -2); // stylelint-disable-line function-disallowed-list
+	margin-left: calc(var(--gutter-start) / -2); // stylelint-disable-line function-disallowed-list
+
+	--gutter-end: var(--gutter-x);
+	--gutter-start: var(--gutter-x);
+	--gutter-x: #{$gutter};
+}
+
+@mixin make-col($size: false, $gutter: $grid-gutter-width) {
+	// Prevent columns from becoming too narrow when at smaller grid tiers by
+	// always setting `width: 100%;`. This works because we set the width
+	// later on to override this initial width.
+	flex-shrink: 0;
+	// Add box sizing if only the grid is loaded
+	box-sizing: if(
+		variable-exists(include-column-box-sizing) and $include-column-box-sizing,
+		border-box,
+		null
+	);
+	max-width: 100%; // Prevent `.col-auto`, `.col` (& responsive variants) from breaking out the grid
+	padding-right: calc(var(--gutter-end, var(--gutter-x)) / 2);
+	padding-left: calc(var(--gutter-start, var(--gutter-x)) / 2);
+
+	@if $size {
+		flex-basis: var(--column-size);
+		width: var(--column-size);
+		max-width: var(--column-size);
+
+		--column-size: #{$size};
+	} @else {
+		flex-basis: auto;
+		width: auto;
+	}
+}
+
+@mixin make-col-size($size: false, $columns: $grid-columns) {
+	@if $size {
+		flex: 0 0 auto;
+		width: percentage($size / $columns);
+	} @else {
+		flex: 1 1 0;
+		max-width: 100%;
+	}
+}
+
+@mixin make-col-auto() {
+	flex: 0 0 auto;
+	width: auto;
+}
+
+@mixin make-col-offset($size, $columns: $grid-columns) {
+	$num: $size / $columns;
+
+	margin-left: if($num == 0, 0, percentage($num));
+}
+
+// Grid generation
+//
+// Used only to generate the correct number of grid classes given
+// any value of `$grid-columns`.
+
+@mixin make-grid-columns(
+	$columns: $grid-columns,
+	$gutter: $grid-gutter-width,
+	$breakpoints: $grid-breakpoints
+) {
+	@each $breakpoint in map-keys($breakpoints) {
+		$infix: breakpoint-infix($breakpoint, $breakpoints);
+
+		@include media-breakpoint-up($breakpoint, $breakpoints) {
+			// Provides basic `.col-{bp}` classes for equal-width flexbox columns
+			// .col#{$infix} {
+			// 	flex: 1 0 0; // Flexbugs #4: https://github.com/philipwalton/flexbugs#flexbug-4
+			// }
+
+			// .col#{$infix}-auto {
+			// 	@include make-col-auto();
+			// }
+
+			@if $columns > 0 {
+				@for $i from 1 through $columns {
+					.col#{$infix}-#{$i} {
+						@include make-col-size($i, $columns);
+					}
+				}
+
+				// `$columns - 1` because offsetting by the width of an entire row isn't possible
+				@for $i from 0 through ($columns - 1) {
+					@if not($infix == '' and $i == 0) {
+						// Avoid emitting useless .offset-0
+						.offset#{$infix}-#{$i} {
+							@include make-col-offset($i, $columns);
+						}
+					}
+				}
+			}
+		}
+	}
+}

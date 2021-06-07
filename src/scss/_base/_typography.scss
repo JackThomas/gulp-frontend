@@ -1,0 +1,127 @@
+/* --------------------------------
+   Typography
+   -------------------------------- */
+
+html,
+body {
+	font-family: $font-primary;
+	font-size: 16px;
+
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.wysiwyg {
+	line-height: 1.6;
+
+	p {
+		margin-top: 0;
+		margin-bottom: 0.5em;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	big {
+		font-size: 1.25rem;
+		font-weight: lighter;
+
+		@include mq(md) {
+			font-size: 1.45rem;
+		}
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-weight: $weight-bold;
+		margin-top: 0;
+		margin-bottom: 0.5em;
+		text-transform: uppercase;
+	}
+
+	/* stylelint-disable -- Remove when following tag is filled */
+	h1 {
+	}
+	/* stylelint-enable */
+	/* stylelint-disable -- Remove when following tag is filled */
+	h2 {
+	}
+	/* stylelint-enable */
+
+	h3 {
+		@include rem(18);
+	}
+
+	/* stylelint-disable -- Remove when following tag is filled */
+	h4 {
+	}
+	/* stylelint-enable */
+
+	/* stylelint-disable -- Remove when following tag is filled */
+	h5 {
+	}
+	/* stylelint-enable */
+
+	/* stylelint-disable -- Remove when following tag is filled */
+	h6 {
+	}
+	/* stylelint-enable */
+
+	a {
+		display: inline-block;
+		position: relative;
+		transition: color 0.3s $custom-ease-out, box-shadow 0.3s $custom-ease-out;
+		text-decoration: underline;
+		word-break: break-word;
+		color: inherit;
+
+		&:visited {
+		}
+
+		&:hover {
+		}
+
+		&:focus,
+		&:active {
+		}
+	}
+
+	ul {
+		margin: 0;
+		margin-bottom: 0.5em;
+		padding: 0;
+		list-style-type: none;
+
+		li {
+			font-weight: inherit;
+			line-height: 1.5;
+			position: relative;
+			margin-bottom: 0.25em;
+			padding-left: 1.5em;
+
+			&:before {
+				position: absolute;
+				top: 0.6em;
+				left: 0.4em;
+				width: 0.35em;
+				height: 0.35em;
+				content: '';
+				border-radius: 10px;
+				background-color: currentColor;
+			}
+		}
+	}
+
+	video {
+		max-width: 100%;
+	}
+
+	img {
+		max-width: 100%;
+	}
+}

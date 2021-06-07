@@ -1,0 +1,19 @@
+/* --------------------------------
+   Container Mixin
+   -------------------------------- */
+
+@mixin make-container($wide: false, $gutter: $container-padding-x) {
+	--gutter-start: var(--gutter-x, #{$gutter});
+	--gutter-end: var(--gutter-x, #{$gutter});
+
+	width: 100%;
+	margin-right: auto;
+	margin-left: auto;
+	padding-right: var(--gutter-end);
+	padding-left: var(--gutter-start);
+
+	@if $wide == false {
+		--max-width: #{$container-max-width};
+		max-width: var(--max-width);
+	}
+}

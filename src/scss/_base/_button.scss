@@ -1,0 +1,53 @@
+/* --------------------------------
+   Buttons
+   -------------------------------- */
+
+.button {
+	@include rem(11);
+	@include letter-spacing(85);
+
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 2;
+	width: var(--button-width, 'auto');
+	height: var(--input-size, 40px);
+	padding-top: 2px;
+	padding-right: 30px;
+	padding-left: 30px;
+	cursor: pointer;
+	transition: z-index 0.2s step-start, opacity 0.2s ease-in-out, background-color 0.2s ease-in-out,
+		border 0.2s ease-in-out;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	color: var(--button-color, #2f3435);
+	border: 1px solid var(--button-border, #eaeaea);
+	background-color: var(--button-background, #eaeaea);
+
+	&:hover {
+		--button-background: var(--button-background-hover, #d0d0d0);
+		--button-border: var(--button-border-hover, #d0d0d0);
+	}
+
+	&--translucent {
+		--button-background: #{rgba(#ffffff, 0.3)};
+		--button-background-hover: #{rgba(#ffffff, 0.7)};
+		--button-border: #{rgba(#ffffff, 0.3)};
+		--button-border-hover: #{rgba(#ffffff, 0.3)};
+		--button-color: #ffffff;
+	}
+
+	&--hollow {
+		--button-background: transparent;
+		--button-background-hover: #dfdfdf;
+		--button-border: #909493;
+		--button-border-hover: #909493;
+		--button-color: #2f3435;
+	}
+
+	&[disabled],
+	&--disabled {
+		cursor: not-allowed;
+	}
+}
