@@ -20,7 +20,7 @@ export default class TemplatesTask extends BaseTask {
             helpers: './src/views/helpers',
             layouts: './src/views/layouts',
             partials: './src/views/partials',
-          }, handlebarsConfig());
+        }, handlebarsConfig());
     }
 
     task(cb) {
@@ -38,7 +38,6 @@ export default class TemplatesTask extends BaseTask {
                 .decorators(`${this.config.decorators}/**/*.js`)
                 .partials(`${this.config.layouts}/**/*.{hbs,handlebars,js}`)
                 .partials(`${this.config.partials}/**/*.{hbs,handlebars,js}`)
-                
             )
             .pipe(rename({ extname: ".html" }))
             .pipe(gulp.dest(this.dest))

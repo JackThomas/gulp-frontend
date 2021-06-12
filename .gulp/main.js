@@ -1,4 +1,6 @@
 import BrowserSync from "./tasks/browser-sync";
+import CleanTask from "./tasks/clean"
+import ImagesTask from "./tasks/images"
 import LintTask from "./tasks/lint"
 import ScriptsTask from "./tasks/scripts"
 import StylesTask from "./tasks/styles"
@@ -9,6 +11,14 @@ import WatchTask from "./tasks/watch";
 export default class GulpTasks {
     constructor() {
         new BrowserSync();
+    }
+
+    clean(cb) {
+        new CleanTask().setSrc(['dist/**/*.html']).task(cb);
+    }
+
+    images(cb) {
+        new ImagesTask().task(cb);
     }
 
     lint(cb) {
@@ -32,9 +42,17 @@ export default class GulpTasks {
     }
 
     watch() {
+        this.watchImages();
         this.watchStyles();
         this.watchScripts();
         this.watchTemplates();
+    }
+
+    async watchImages() {
+        const paths = ['src/images/**'];
+        const tasks = [this.images];
+
+        await new WatchTask().setWatchPaths(paths).task(tasks);
     }
 
     async watchStyles() {
@@ -52,7 +70,8 @@ export default class GulpTasks {
     }
 
     async watchTemplates() {
-        const paths = ['src/views/**/*hbs'];
+        const paths = ['src/views/**/*.hbs'];
+        // const tasks = [this.clean, this.templates];
         const tasks = [this.templates];
 
         await new WatchTask().setWatchPaths(paths).task(tasks);
