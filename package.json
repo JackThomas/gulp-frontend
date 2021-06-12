@@ -31,16 +31,19 @@
 		"autoprefixer": "^10.2.6",
 		"babel-core": "^6.26.3",
 		"babel-plugin-transform-class-properties": "^6.24.1",
+		"babel-preset-airbnb": "^5.0.0",
 		"babelify": "^10.0.0",
 		"browser-sync": "^2.26.14",
 		"browserify": "^17.0.0",
-		"eslint": "^7.27.0",
+		"del": "^6.0.0",
+		"eslint": "^7.28.0",
 		"eslint-config-airbnb-base": "^14.2.1",
 		"eslint-config-prettier": "^8.3.0",
 		"eslint-plugin-import": "^2.23.4",
 		"gulp": "^4.0.2",
 		"gulp-babel": "^8.0.0",
 		"gulp-buffer": "^0.0.2",
+		"gulp-changed": "^4.0.2",
 		"gulp-concat": "^2.6.1",
 		"gulp-csso": "^4.0.1",
 		"gulp-dart-sass": "^1.0.2",
@@ -74,5 +77,8 @@
 		"vinyl-buffer": "^1.0.1",
 		"vinyl-source-stream": "^2.0.0"
 	},
-	"dependencies": {}
+	"dependencies": {
+		"scrollmagic": "^2.0.8",
+		"validate.js": "^0.13.1"
+	}
 }
