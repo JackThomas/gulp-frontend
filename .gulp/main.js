@@ -1,5 +1,6 @@
 import BrowserSync from "./tasks/browser-sync";
 import CleanTask from "./tasks/clean"
+import FontsTask from "./tasks/fonts"
 import ImagesTask from "./tasks/images"
 import LintTask from "./tasks/lint"
 import ScriptsTask from "./tasks/scripts"
@@ -15,6 +16,10 @@ export default class GulpTasks {
 
     clean(cb) {
         new CleanTask().setSrc(['dist/**/*.html']).task(cb);
+    }
+
+    fonts(cb) {
+        new FontsTask().task(cb);
     }
 
     images(cb) {
@@ -42,10 +47,18 @@ export default class GulpTasks {
     }
 
     watch() {
+        this.watchFonts();
         this.watchImages();
         this.watchStyles();
         this.watchScripts();
         this.watchTemplates();
+    }
+
+    async watchFonts() {
+        const paths = ['src/fonts/**'];
+        const tasks = [this.fonts];
+
+        await new WatchTask().setWatchPaths(paths).task(tasks);
     }
 
     async watchImages() {
