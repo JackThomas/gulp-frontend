@@ -1,6 +1,7 @@
 # gulp-frontend
-Simple frontend website starter for protoyping.
-Features\
+Simple frontend website starter for prototyping.
+
+Features
   - Handlebars for templating
   - JavaScript(ES6) 
   - SCSS 
